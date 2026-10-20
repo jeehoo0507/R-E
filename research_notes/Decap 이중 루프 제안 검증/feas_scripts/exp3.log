@@ -1,0 +1,16 @@
+N=50 n=2500 F=32: setup factor(32f)=0.15s probe col=0.006s diag(Z) all nodes=9.4s
+step k: refactor+solve(32f) [s] | SMW commit(32f) [s] | SMW eval all n*3 candidates(32f) [s] | rel err SMW vs refactor
+k= 1: 0.133 | 0.0054 | 0.004 | 5.6e-13
+k= 4: 0.137 | 0.0053 | 0.008 | 2.9e-13
+k= 8: 0.140 | 0.0052 | 0.024 | 8.8e-14
+k=16: 0.138 | 0.0052 | 0.090 | 2.2e-14
+per-candidate eval via refactorization = 0.136s -> all 7500 candidates would be 0.3 h per greedy step
+per-candidate eval via SMW (given diag) = 4.65 us
+N=100 n=10000 F=32: setup factor(32f)=0.67s probe col=0.024s diag(Z) all nodes=195.8s (extrapolated from 2 freqs)
+step k: refactor+solve(32f) [s] | SMW commit(32f) [s] | SMW eval all n*3 candidates(32f) [s] | rel err SMW vs refactor
+k= 1: 0.672 | 0.0247 | 0.016 | 2.4e-13
+k= 4: 0.688 | 0.0246 | 0.033 | 2.7e-13
+k= 8: 0.676 | 0.0243 | 0.098 | 1.7e-13
+k=16: 0.655 | 0.0234 | 0.366 | 4.5e-14
+per-candidate eval via refactorization = 0.668s -> all 30000 candidates would be 5.6 h per greedy step
+per-candidate eval via SMW (given diag) = 4.65 us

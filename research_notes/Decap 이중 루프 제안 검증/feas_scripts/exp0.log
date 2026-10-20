@@ -1,0 +1,7 @@
+c_cell=8.8540e-13 F  l_edge=1.2566e-11 H  r_edge=1.7241e-02 ohm
+R/L corner f = 2.184e+08 Hz; cells/s = 2.998e+11
+max rel err sparse vs build_Y: 6.937389641599732e-17
+N=10: analytic f10 = 14.990 GHz; |Z| peaks (GHz): [14.938]  |Z|@10MHz=180  min|Z|=0.033  (0.2s)
+N=20: analytic f10 = 7.495 GHz; |Z| peaks (GHz): [ 7.433 10.604 14.749 16.745]  |Z|@10MHz=44.9  min|Z|=0.0362  (0.4s)
+N=50: analytic f10 = 2.998 GHz; |Z| peaks (GHz): [ 2.944  4.199  5.915  6.631  9.46  10.74 ]  |Z|@10MHz=7.19  min|Z|=0.0431  (5.1s)
+N=100: analytic f10 = 1.499 GHz; |Z| peaks (GHz): [1.446 2.063 3.3   4.648 5.344 6.067]  |Z|@10MHz=1.8  min|Z|=0.0495  (23.4s)

@@ -1,0 +1,28 @@
+/private/tmp/claude-501/-Users-choejihu-Documents-claude-R-E/7f6a048a-578c-40f5-88fe-41e0a04e63ed/scratchpad/feas/exp4_lib.py:49: RuntimeWarning: divide by zero encountered in log10
+  viol = np.clip(np.log10(np.abs(new) / Zt[:, None, None]), 0, None).sum(0)   # [n,T]
+N=10 probe=81 bare |Zpp|: 0.01G:180 0.018G:100 0.032G:55.8 0.058G:31.1 0.1G:17.3 0.19G:9.65 0.33G:5.36 0.6G:2.96 1.1G:1.61 1.9G:0.813 3.5G:0.302 6.2G:0.135 11G:0.938 20G:1.82
+  band 10M-1G Zt=0.5: greedy count=4  worst |Z|/Zt=0.79  (0.0s)
+  band 10M-1G Zt=0.2: greedy count=8  worst |Z|/Zt=0.99  (0.0s)
+  band 10M-1G Zt=0.1: greedy count=16  worst |Z|/Zt=0.99  (0.0s)
+  band 10M-3G Zt=0.5: greedy count=5  worst |Z|/Zt=0.98  (0.0s)
+  band 10M-3G Zt=0.2: greedy count=11  worst |Z|/Zt=0.96  (0.0s)
+  band 10M-3G Zt=0.1: greedy count=infeasible(>80)  worst |Z|/Zt=1.29  (3.5s)
+  band 10M-10G Zt=0.5: greedy count=6  worst |Z|/Zt=0.98  (0.0s)
+  band 10M-10G Zt=0.2: greedy count=infeasible(>80)  worst |Z|/Zt=1.75  (3.5s)
+  band 10M-10G Zt=0.1: greedy count=infeasible(>80)  worst |Z|/Zt=4.01  (3.5s)
+  band 10M-20G Zt=0.5: greedy count=infeasible(>80)  worst |Z|/Zt=1.25  (3.5s)
+  band 10M-20G Zt=0.2: greedy count=infeasible(>80)  worst |Z|/Zt=3.88  (3.5s)
+  band 10M-20G Zt=0.1: greedy count=infeasible(>80)  worst |Z|/Zt=7.52  (3.5s)
+N=20 probe=276 bare |Zpp|: 0.01G:44.9 0.018G:25 0.032G:14 0.058G:7.77 0.1G:4.33 0.19G:2.41 0.33G:1.33 0.6G:0.717 1.1G:0.359 1.9G:0.126 3.5G:0.0793 6.2G:0.503 11G:0.132 20G:0.852
+  band 10M-1G Zt=0.5: greedy count=4  worst |Z|/Zt=0.79  (0.0s)
+  band 10M-1G Zt=0.2: greedy count=8  worst |Z|/Zt=0.99  (0.0s)
+  band 10M-1G Zt=0.1: greedy count=16  worst |Z|/Zt=0.99  (0.2s)
+  band 10M-3G Zt=0.5: greedy count=5  worst |Z|/Zt=0.98  (0.0s)
+  band 10M-3G Zt=0.2: greedy count=12  worst |Z|/Zt=0.96  (0.1s)
+  band 10M-3G Zt=0.1: greedy count=24  worst |Z|/Zt=1.00  (0.5s)
+  band 10M-10G Zt=0.5: greedy count=6  worst |Z|/Zt=1.00  (0.0s)
+  band 10M-10G Zt=0.2: greedy count=infeasible(>80)  worst |Z|/Zt=1.53  (13.6s)
+  band 10M-10G Zt=0.1: greedy count=infeasible(>80)  worst |Z|/Zt=3.03  (13.5s)
+  band 10M-20G Zt=0.5: greedy count=6  worst |Z|/Zt=0.98  (0.0s)
+  band 10M-20G Zt=0.2: greedy count=infeasible(>80)  worst |Z|/Zt=2.26  (13.6s)
+  band 10M-20G Zt=0.1: greedy count=infeasible(>80)  worst |Z|/Zt=5.49  (13.5s)
