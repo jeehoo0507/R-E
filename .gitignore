@@ -7,3 +7,6 @@ __pycache__/
 # generated: problem pools, checkpoints, logs (rebuild with build_pool.py / train.py)
 runs/
 *.pt
+
+# experiment artifacts stay local; results go through metrics.json / RESULTS.md
+*.pkl
