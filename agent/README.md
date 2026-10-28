@@ -36,3 +36,16 @@ tmux kill-session -t agent    # 즉시 종료
 - 라운드 끝에 자동으로 commit + push (에이전트가 잊어도 `loop.sh`가 한다).
 - `END_DATE`(기본 2026-11-11) 이후 또는 `agent/STOP`이 있으면 멈춘다.
 - 모델·턴 수 바꾸기: `MODEL=claude-sonnet-5-5 MAX_TURNS=200 bash agent/loop.sh`
+
+## 모델 선택 (loop.sh가 자동으로)
+| 상황 | 모델 |
+|---|---|
+| 보통 라운드 | `claude-opus-5-5` (`MODEL` 환경변수로 변경) |
+| 하루의 첫 라운드 (DAILY.md 작성 + 계획) | `claude-fable-5-1` |
+| 직전 라운드가 `STUCK:`을 남겼거나 비정상 종료 | `claude-fable-5-1` 한 번 |
+| 사람이 강제 | `echo claude-fable-5-1 > agent/MODEL` (지우면 자동으로 복귀) |
+
+## 질문 없이 도는가
+- `claude -p`는 무인 모드라 질문할 수 없다. 프롬프트에 "질문 금지, 보수적 선택 후 `결정:` 기록" 규칙을 넣었다.
+- 허용 도구(`--allowedTools`) 밖의 명령은 거부되고 에이전트는 다른 방법을 찾는다. 환경 파일 수정·네트워크·삭제는 허용 목록에 없다.
+- 사람의 개입 통로는 `agent/QUEUE.md`와 `agent/STOP` 둘뿐이다.
