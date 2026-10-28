@@ -41,8 +41,8 @@ tmux kill-session -t agent    # 즉시 종료
 | 상황 | 모델 |
 |---|---|
 | 보통 라운드 | `claude-opus-5-5` (`MODEL` 환경변수로 변경) |
-| 하루의 첫 라운드 (DAILY.md 작성 + 계획) | `claude-fable-5-1` |
-| 직전 라운드가 `STUCK:`을 남겼거나 비정상 종료 | `claude-fable-5-1` 한 번 |
+| 하루의 첫 라운드 (DAILY.md 작성 + 계획) | `claude-opus-5-5` (MODEL_HARD로 변경 가능) |
+| 직전 라운드가 `STUCK:`을 남겼거나 비정상 종료 | MODEL_HARD 한 번 (기본 Opus, 사용량 아끼려고). Fable이 필요하면 `echo claude-fable-5-1 > agent/MODEL` |
 | 사람이 강제 | `echo claude-fable-5-1 > agent/MODEL` (지우면 자동으로 복귀) |
 
 ## 질문 없이 도는가

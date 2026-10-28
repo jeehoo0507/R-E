@@ -10,7 +10,7 @@ set -u
 cd "$(dirname "$0")/.."
 END_DATE="${END_DATE:-2026-11-11}"     # no new rounds on/after this date (experiments freeze 11/10)
 MODEL_DEFAULT="${MODEL:-claude-opus-5-5}"   # routine rounds
-MODEL_HARD="${MODEL_HARD:-claude-fable-5-1}" # planning / stuck rounds (see pick_model)
+MODEL_HARD="${MODEL_HARD:-claude-opus-5-5}" # planning / stuck rounds (see pick_model)
 pick_model() {
   # 1) human override: agent/MODEL holds a model id
   if [ -s agent/MODEL ]; then cat agent/MODEL; return; fi
