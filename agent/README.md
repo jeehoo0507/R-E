@@ -35,7 +35,7 @@ tmux kill-session -t agent    # 즉시 종료
 - 라운드마다 새 `claude -p` 세션. 기억은 파일로만 이어진다: `PROGRESS.md`, `DAILY.md`, `RESULTS.md`, `runs/`, git log.
 - 라운드 끝에 자동으로 commit + push (에이전트가 잊어도 `loop.sh`가 한다).
 - `END_DATE`(기본 2026-11-11) 이후 또는 `agent/STOP`이 있으면 멈춘다.
-- 모델·턴 수 바꾸기: `MODEL=claude-sonnet-5-5 MAX_TURNS=200 bash agent/loop.sh`
+- 모델 바꾸기: `MODEL=claude-sonnet-5-5 bash agent/loop.sh`
 
 ## 모델 선택 (loop.sh가 자동으로)
 | 상황 | 모델 |

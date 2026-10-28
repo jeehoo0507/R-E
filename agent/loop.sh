@@ -9,7 +9,6 @@
 set -u
 cd "$(dirname "$0")/.."
 END_DATE="${END_DATE:-2026-11-11}"     # no new rounds on/after this date (experiments freeze 11/10)
-MAX_TURNS="${MAX_TURNS:-400}"          # tool calls per round
 MODEL_DEFAULT="${MODEL:-claude-opus-5-5}"   # routine rounds
 MODEL_HARD="${MODEL_HARD:-claude-fable-5-1}" # planning / stuck rounds (see pick_model)
 pick_model() {
@@ -39,7 +38,6 @@ while true; do
   git pull --rebase r2e main >>"$log" 2>&1 || true
   claude -p "$ROUND_PROMPT" \
     --model "$MODEL" \
-    --max-turns "$MAX_TURNS" \
     --permission-mode acceptEdits \
     --allowedTools "$ALLOWED" \
     --output-format text >>"$log" 2>&1
