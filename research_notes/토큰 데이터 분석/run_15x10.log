@@ -1,0 +1,75 @@
+[pcb 1/15] holes teacher= 5 K=1 t=4s
+[pcb 2/15] holes teacher= 8 K=1 t=10s
+[pcb 3/15] rect  teacher= 5 K=1 t=14s
+[pcb 4/15] L     teacher= 7 K=1 t=19s
+[pcb 5/15] L     teacher= 6 K=1 t=24s
+[pcb 6/15] holes teacher= 5 K=1 t=28s
+[pcb 7/15] L     teacher= 5 K=1 t=31s
+[pcb 8/15] rect  teacher=11 K=1 t=40s
+[pcb 9/15] L     teacher= 8 K=1 t=48s
+[pcb 10/15] holes teacher= 7 K=1 t=52s
+[pcb 11/15] L     teacher= 5 K=1 t=56s
+[pcb 12/15] holes teacher= 5 K=1 t=60s
+[pcb 13/15] L     teacher= 6 K=1 t=64s
+[pcb 14/15] holes teacher= 4 K=1 t=67s
+[pcb 15/15] holes teacher= 6 K=1 t=72s
+[ip 1/15] holes teacher=17 K=1 t=89s
+[ip 2/15] rect  teacher=13 K=1 t=104s
+[ip 3/15] L     teacher=16 K=1 t=123s
+[ip 4/15] holes teacher=19 K=1 t=147s
+[ip 5/15] rect  teacher=28 K=1 t=186s
+[ip 6/15] holes teacher=19 K=1 t=206s
+[ip 7/15] holes teacher=31 K=1 t=251s
+[ip 8/15] L     teacher=20 K=1 t=272s
+[ip 9/15] L     teacher=13 K=1 t=281s
+[ip 10/15] holes teacher=20 K=1 t=299s
+[ip 11/15] L     teacher=11 K=1 t=312s
+[ip 12/15] L     teacher=27 K=1 t=361s
+[ip 13/15] rect  teacher=20 K=1 t=382s
+[ip 14/15] holes teacher=20 K=1 t=398s
+[ip 15/15] rect  teacher=10 K=1 t=408s
+
+=== A2 종류 불변성: PCB vs 인터포저형 분포 차이 (KS 거리, 0=같음, 1=완전히 다름) ===
+   0.02  coord: probe와 거리 (칸)
+   0.02  coord: probe와 거리 (판 크기 비율)
+   1.00  loopL (H, 원값)
+   0.27  loopL 정규화 2πf_c·L/Zt
+   0.47  fixed: |Z_pi| 최악 샘플 (Ω, 원값)
+   0.47  fixed: |Z_pi|/Zt 최악 샘플
+   0.89  oracle: 정확한 1수 후 최악 비율
+   0.96  modal: 결합도 g (최악 모드)
+   0.15  modal: 잔여 L 정규화
+   1.00  모드 주파수 f (Hz, 원값)
+   1.00  모드 주파수 f/f_c (정규화)
+   1.00  모드 Q
+   1.00  모드 크기 |Z|/Zt (정규화)
+   1.00  모드 크기 |Z| (Ω, 원값)
+  모드 수/판: PCB 1.0, 인터포저형 1.0
+
+=== A3 선생님 해 관련성: 특징 하나로 '선생님 해에 들어가는 포트' 맞히기 (AUC) ===
+    방향은 PCB에서 정하고 인터포저형에 그대로 적용. 0.5 = 무작위
+  PCB 0.82 → IP 0.42  coord: probe와 거리 (칸)
+  PCB 0.82 → IP 0.42  coord: probe와 거리 (판 크기 비율)
+  PCB 0.79 → IP 0.35  loopL (H, 원값)
+  PCB 0.79 → IP 0.35  loopL 정규화 2πf_c·L/Zt
+  PCB 0.55 → IP 0.90  fixed: |Z_pi| 최악 샘플 (Ω, 원값)
+  PCB 0.55 → IP 0.90  fixed: |Z_pi|/Zt 최악 샘플
+  PCB 0.84 → IP 0.92  oracle: 정확한 1수 후 최악 비율
+  PCB 0.82 → IP 0.57  modal: 결합도 g (최악 모드)
+  PCB 0.60 → IP 0.65  modal: 잔여 L 정규화
+
+=== A4 특징 하나로 만든 규칙 배치 (prune 후, 성공 = 700점 검사) ===
+  [PCB]
+    성공 100%  개수/greedy 중앙값 1.00  greedy (정확한 1수)
+    성공 100%  개수/greedy 중앙값 1.00  coord (probe에 가까운 순)
+    성공 100%  개수/greedy 중앙값 1.00  loopL (인덕턴스 작은 순)
+    성공 100%  개수/greedy 중앙값 1.12  fixed (고정 8점 최악 주파수)
+    성공 100%  개수/greedy 중앙값 1.00  modal (최악 모드 결합도)
+  [인터포저형]
+    성공 100%  개수/greedy 중앙값 1.00  greedy (정확한 1수)
+    성공 100%  개수/greedy 중앙값 1.44  coord (probe에 가까운 순)
+    성공 100%  개수/greedy 중앙값 1.38  loopL (인덕턴스 작은 순)
+    성공 100%  개수/greedy 중앙값 1.15  fixed (고정 8점 최악 주파수)
+    성공 100%  개수/greedy 중앙값 1.15  modal (최악 모드 결합도)
+
+총 408s, 판 15개 x 2종류, 10x10칸

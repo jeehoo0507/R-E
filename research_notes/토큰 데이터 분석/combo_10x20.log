@@ -1,0 +1,32 @@
+[pcb 5000] 26s (total 28s)
+[pcb 6000] 27s (total 29s)
+[pcb 4000] 28s (total 29s)
+[pcb 3000] 29s (total 30s)
+[pcb 7000] 30s (total 31s)
+[pcb 2000] 30s (total 32s)
+[pcb 8000] 32s (total 33s)
+[pcb 1000] 32s (total 34s)
+[pcb 9000] 23s (total 51s)
+[pcb 10000] 26s (total 55s)
+[ip 3007] 77s (total 109s)
+[ip 6007] 121s (total 155s)
+[ip 8007] 114s (total 169s)
+[ip 4007] 196s (total 228s)
+[ip 9007] 141s (total 250s)
+[ip 10007] 104s (total 259s)
+[ip 2007] 308s (total 339s)
+[ip 7007] 388s (total 439s)
+[ip 1007] 432s (total 461s)
+[ip 5007] 2639s (total 2672s)
+
+=== 특징 묶음별 'LS 선생님 해 포트' 예측 AUC (로지스틱 회귀, 판별 평균) ===
+  PCB→PCB  IP→IP  | PCB→IP  IP→PCB | 특징 묶음
+   0.74    0.48  |  0.46    0.23  | 좌표만 (Park식)
+   0.68    0.53  |  0.43    0.30  | loop L만 (Manoharan 포트 특징)
+   0.81    0.77  |  0.46    0.69  | 고정 8점 Z (Manoharan ΔZ / R4식)
+   0.88    0.86  |  0.45    0.59  | loop L + 고정 8점 (Manoharan 전체)
+   0.73    0.98  |  0.98    0.74  | 정확한 1수 효과
+   0.86    0.88  |  0.59    0.32  | 공진(모달)만
+   0.87    0.89  |  0.64    0.31  | 공진 + 1수 효과
+   0.93    0.95  |  0.55    0.46  | 공진 + 1수 + 고정 8점
+   0.92    0.95  |  0.56    0.45  | 전부

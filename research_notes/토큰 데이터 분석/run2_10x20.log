@@ -1,0 +1,65 @@
+[pcb seed=6000] holes K=1 LS=5 g+p=5 25s (total 27s)
+[pcb seed=5000] L     K=1 LS=4 g+p=4 25s (total 27s)
+[pcb seed=2000] rect  K=1 LS=4 g+p=4 26s (total 27s)
+[pcb seed=3000] holes K=1 LS=5 g+p=7 35s (total 36s)
+[pcb seed=4000] holes K=1 LS=5 g+p=8 37s (total 39s)
+[pcb seed=8000] rect  K=1 LS=5 g+p=6 22s (total 49s)
+[pcb seed=1000] rect  K=1 LS=7 g+p=9 60s (total 62s)
+[pcb seed=9000] L     K=1 LS=6 g+p=9 44s (total 71s)
+[pcb seed=7000] holes K=1 LS=6 g+p=8 59s (total 86s)
+[pcb seed=10000] rect  K=1 LS=7 g+p=8 61s (total 97s)
+[ip seed=3007] holes K=2 LS=29 g+p=29 145s (total 207s)
+[ip seed=6007] rect  K=1 LS=36 g+p=36 185s (total 281s)
+[ip seed=4007] holes K=1 LS=48 g+p=48 246s (total 317s)
+[ip seed=2007] L     K=2 LS=65 g+p=65 395s (total 443s)
+[ip seed=8007] L     K=2 LS=35 g+p=35 198s (total 479s)
+[ip seed=9007] holes K=2 LS=36 g+p=51 219s (total 536s)
+[ip seed=1007] rect  K=1 LS=78 g+p=78 542s (total 581s)
+[ip seed=10007] rect  K=1 LS=39 g+p=39 149s (total 593s)
+[ip seed=7007] L     K=2 LS=74 g+p=74 456s (total 663s)
+[ip seed=5007] L     K=2 LS=80 g+p=80 2897s (total 2982s)
+
+=== 선생님: LS 개수 / greedy+prune 개수 ===
+  pcb: 중앙값 0.81, LS가 더 적은 판 70%, 모드 수/판 1.0
+  ip: 중앙값 1.00, LS가 더 적은 판 10%, 모드 수/판 1.6
+
+=== A2 포트 특징 종류 불변성 (KS, 0=같음) / A3 LS 선생님 해 예측 AUC (방향은 PCB 기준) ===
+   KS    PCB→IP   특징
+  0.12  0.77→0.46  좌표: probe와 거리 / 판 크기
+  0.66  0.70→0.43  loopL 정규화 (Manoharan식)
+  0.61  0.58→0.06  고정 8점 |Z_pi|/Zt (최악 샘플)
+  0.94  0.59→0.98  정확한 1수 효과
+  0.79  0.78→0.57  모달 v1: 결합도 g
+  0.54  0.56→0.87  모달 v2: 참여비 log(r_ii/r_pp)
+  0.52  0.72→0.30  모달 v3: r_pi / 판 최대
+  1.00  0.57→0.04  모달 v4: log(|Z_ii(f_k)|/|z_d|) 감쇠력
+  0.89  0.69→0.61  모달: 잔여 L 정규화
+
+=== 모드 정규화 점검: PCB vs IP 분포 차이 (KS) ===
+  1.00  주파수 원값                       PCB 중앙 8.27e+08 / IP 중앙 1.38e+09
+  0.62  f / 대역 중심                    PCB 중앙 3.7 / IP 중앙 0.689
+  0.62  대역 안 상대 위치 (0~1)             PCB 중앙 0.71 / IP 중앙 0.419
+  0.70  f / decap SRF 중간값            PCB 중앙 0.924 / IP 중앙 0.0613
+  1.00  decap SRF 범위 안 상대 위치         PCB 중앙 0.477 / IP 중앙 -0.713
+  1.00  Q                            PCB 중앙 15.5 / IP 중앙 7.15
+  1.00  |Z| 원값                       PCB 중앙 14.7 / IP 중앙 2.09
+  1.00  |Z| / Zt                     PCB 중앙 39.2 / IP 중앙 11
+  모드 수: PCB 10, IP 16
+
+=== A4 특징 하나로 만든 규칙 (prune 후 개수 / LS 선생님 개수, 중앙값) ===
+  [pcb]
+    성공 100%  1.24  greedy
+    성공 100%  1.45  coord
+    성공 100%  1.41  loopL
+    성공 100%  1.20  fixed
+    성공 100%  1.80  modal_g
+    성공  80%  2.32  modal_damp
+  [ip]
+    성공  90%  1.00  greedy
+    성공  70%  1.34  coord
+    성공  40%  1.16  loopL
+    성공  70%  1.11  fixed
+    성공  30%  1.87  modal_g
+    성공  60%  1.41  modal_damp
+
+총 2983s, 판 10개 x 2종류, 20x20칸, F=350
