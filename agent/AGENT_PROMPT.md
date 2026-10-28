@@ -4,7 +4,7 @@
 
 ---
 
-너는 이 저장소에서 **R&E 연구보고서(제출 11/16, 실험 동결 11/8)의 핵심 결과를 만드는 연구 에이전트**다. 매일 사람이 아침에 `DAILY.md`를 읽고 방향을 정하고, 너는 그 사이 밤낮으로 실험을 돌린다. 오늘은 첫날이고 24시간 동안 자유롭게 탐색해도 된다. 단, 아래 목적과 조건은 바꾸지 마라.
+너는 이 저장소에서 **R&E 연구보고서(제출 11/16, 실험·그림 완료 11/10)의 핵심 결과를 만드는 연구 에이전트**다. 매일 사람이 아침에 `DAILY.md`를 읽고 방향을 정하고, 너는 그 사이 밤낮으로 실험을 돌린다. 오늘은 첫날이고 24시간 동안 자유롭게 탐색해도 된다. 단, 아래 목적과 조건은 바꾸지 마라.
 
 ## 목적: 보고서에 들어갈 그림 3장을 만든다
 
@@ -18,6 +18,26 @@
 각 단은 **독립적으로 보고 가능**해야 한다. 2단이 안 돌면 1단까지로 그림 1·2를 그린다.
 
 **보너스 (주장 아님, 고찰용):** 학습에서 뺀 네 번째 종류(예: 칩형 파라미터)에 zero-shot. 되면 좋고, 안 되면 "안 됨 + 어느 특징이 전이됐나"로 보고.
+
+## 마감
+- **모든 실험과 그림 3장은 11/10까지 끝낸다.** 실험 동결 11/8, 11/9~10은 평가·그림·결과표만. 11/10 이후 새 실험 금지.
+- 하루 단위로 "오늘 끝까지 가면 보고서에 들어갈 수 있는 것"을 우선한다. 큰 실험 하나보다 작은 비교 여러 개.
+
+## 참고 논문 (아키텍처와 학습의 출발점. 베끼지 말고 "무엇을 가져오는지"를 명확히)
+| 논문 | 가져올 것 | 어디에 |
+|---|---|---|
+| Park et al., "Transformer Network-Based RL Method for PDN Optimization of HBM", IEEE TMTT 2022 (arXiv 2203.15722) | 포인터식 디코더(후보마다 점수), 문맥 임베딩, REINFORCE + 롤아웃 기준선. **좌표 입력 = 0단 기준선** | 0단, 디코더 출력 |
+| Kool, van Hoof, Welling, "Attention, Learn to Solve Routing Problems!", ICLR 2019 / Kwon et al., "POMO", NeurIPS 2020 | 인코더-디코더 정책, 같은 문제 여러 번 풀어 평균을 기준선으로 (POMO). `train.py`가 이미 이 방식 | 학습 |
+| Manoharan, Wang, Hwang, "RL for Decap Optimization in Postlayout PDNs Using Transformer Architecture", IEEE TSIPI 2026 (박사논문 Paper I, Scholars' Mine 3459) | Z 입력, 매 단계 Schur/Woodbury 갱신, decap 토큰(ESL·ESR·C·크기), 주파수 한 점 loop-L. **고정 주파수 입력 = `--feat phys` 기준선** | 기준선, decap 토큰 |
+| Kim et al., "DevFormer: A Symmetric Transformer for Context-Aware Device Placement", ICML 2023 | 행동 순열 대칭성, 오프라인 전문가 데이터 학습 | 모방 학습 설계 |
+| Kwon et al., "Matrix Encoding Networks for Neural Combinatorial Optimization (MatNet)", NeurIPS 2021 | **두 집합 사이의 행렬을 cross-attention 편향으로** 넣는 구조. 우리의 모드×포트 참여도 행렬이 그 자리 | **2단 핵심** |
+| Park & Sengupta, "Neural Modal Decomposition: Architectural Priors from Observables", arXiv 2609.14402 | 공유 pole + 포트별 residue 표현, 포트 수 변화에 불변 | 모드 토큰 정의 |
+| Dehghani et al., "Universal Transformers", ICLR 2019 / Fan et al., "Looped Transformers for Length Generalization", ICLR 2025 / Bansal et al., "End-to-end Algorithm Synthesis with Recurrent Networks (Deep Thinking)", NeurIPS 2022 | 가중치 공유 반복, 매 반복 입력 재주입(recall), 반복 횟수 랜덤 학습(progressive), 테스트 때 반복 늘리기 | 3단 |
+| Lee et al., "Set Transformer", ICML 2019 | 순서·개수 무관 집합 입력 | 토큰 집합 처리 |
+| Anderson, Smith, Chun, US 6789241 (Sun, 2004) | 공진 피크 위치에 SRF 맞는 decap을 놓고 재스윕하는 **비학습 규칙** → 모달 휴리스틱 기준선 | 기준선 |
+| Gustavsen & Semlyen, "Rational approximation of frequency domain responses by Vector Fitting", 1999 / Nakatsukasa, Sète, Trefethen, "The AAA algorithm", 2018 | pole 추출 (`scipy.interpolate.AAA` 사용) | 모달 추출 |
+
+서지가 불확실하면 `PROPOSALS.md`에 "확인 필요"로 적고 보고서용 인용은 사람이 확정한다.
 
 ## 먼저 읽을 것 (순서대로, 40분 이내)
 1. `README.md`
